@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Yes or No</title>
+    <title>Meri valentineee?</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -86,7 +86,6 @@
     <button id="yes">Yes</button>
     <button id="no">No</button>
 
-    <!-- Custom popup element -->
     <div id="popup">Yayyy!! 🫶 🎉</div>
 
     <script>
@@ -94,7 +93,6 @@
       const yesButton = document.getElementById("yes");
       const popup = document.getElementById("popup");
 
-      // Teleport No button
       function teleportButton() {
         const padding = 20;
         const maxX = window.innerWidth - noButton.offsetWidth - padding;
@@ -105,7 +103,6 @@
         noButton.style.top = `${randomY}px`;
       }
 
-      // Desktop: mouse near No button
       document.addEventListener("mousemove", (e) => {
         const rect = noButton.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -114,25 +111,20 @@
         if (distance < 100) teleportButton();
       });
 
-      // Mobile: touch No button
       noButton.addEventListener("touchstart", (e) => {
         e.preventDefault();
         teleportButton();
       });
 
-      // Yes button: confetti + popup
       yesButton.addEventListener("click", () => {
-        // Launch confetti
         confetti({
           particleCount: 150,
           spread: 70,
           origin: { y: 0.6 },
         });
 
-        // Show popup immediately
         popup.classList.add("show");
 
-        // Auto-hide popup after 2.5 seconds
         setTimeout(() => {
           popup.classList.remove("show");
         }, 2500);
